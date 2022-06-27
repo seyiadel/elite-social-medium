@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>Sign-up</title>
+</head>
+
+<body>
+    <div class="init-cont">
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="container">
+                <h1>Sign Up</h1>
+                <p>Please fill in this form to create an account.</p>
+                <div>
+                    <style>
+                        h4{
+                            color: red;
+                        }
+                    </style>
+                    {% for message in messages %}
+                    <h4>{{message}}</h4>
+                    {%endfor%}
+                </div>
+                <label for="name"><b>Username</b></label>
+                <input type="text" placeholder="Username" name="username">
+
+                <label for="email"><b>Email</b></label>
+                <input type="email" placeholder="Enter Email" name="email">
+
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="password">
+
+                <label for="psw-repeat"><b>Confirm Password</b></label>
+                <input type="password" placeholder="Confirm Password" name="password2">
+
+                <button class="clearfix" type="submit">Sign Up</button>
+            </div>
+        </form>
+        <div class="alt">
+            <p>Already have an account? <a href="{% url 'login' %}">Login</a> here</p>
+        </div>
+    </div>
+    <script src="{% static 'app.js' %}"></script>
+</body>
+
+</html>
