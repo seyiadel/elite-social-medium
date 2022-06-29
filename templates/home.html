@@ -1,17 +1,112 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/home.css">
+    <link rel="stylesheet" href="{% static 'home.css' %}">
     <title>Bants & Talk</title>
 </head>
-<body>
-    <div class="content">
-     <h1> Welcome Home {{user.username}}, </h1>
-    </div>
 
-    <a href="{% url 'logout' %}">Logout</a>
+<body>
+    <div class="sidenav">
+       <div class="sidenav-li"> 
+           <img src="../templates/icons/home.png"> 
+           <p>Home</p>
+        </div>
+        <div class="sidenav-li addPost">
+            <img src="../templates/icons/plus.png"> 
+            <p class="addPost">Add Post</p>
+        </div>
+        <div class="sidenav-li"> 
+            <img src="../templates/icons/bell.png"> 
+            <p>Notification</p>
+         </div>
+         <div class="sidenav-li"> 
+            <img src="../templates/icons/info.png"> 
+            <p>About Us</p>
+         </div>
+    </div>
+    <div class="overlay">
+        <div class="overlay-content">
+            <p class="close">X</p>
+            <div class="inner-overlay-content">
+                <form class="form">
+                    <h1>{{user.username}},Create a post:</h1>
+                    <label for="story">Write a caption:</label>
+                    <textarea placeholder="Post a caption.." id="post-txt" name="story" rows="5" cols="33">
+
+                    </textarea>
+
+                    <label id="photo" for="photo">Add a picture below:</label>
+                    <input type="file" id="image-input" accept="image/jpeg, image/png, image/jpg">
+
+                    <div id="display-image"></div>
+                    <button>Post</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="sidenav2">
+        <h3>{{user.username}}</h3>
+    </div>
+    <div class="init-content">
+        <div class="init-content2">
+            <div class="content">
+                <h1> Welcome Home {{user.username}}. </h1>
+                <a class="link" href="{% url 'logout' %}">Logout</a>
+            </div>
+            <div class="posts">
+                <div class="uploaded">
+                    <p class="post-user">{{user.username}}</p>
+                    <div class="img-cont">
+                        <img src="../templates/Wallpapers/andre-benz-qJfznuTMAYA-unsplash.jpg">
+                    </div>
+                    <div class="caption">
+                        <p>@{{user.username}}:Nice view from somewhere around the world.</p>
+                    </div>
+                    <form class="comment-form">
+                        <!-- <label for="text">Add Your comment</label> -->
+                        <input type="text" placeholder='Add your comment'>
+                        <button>Post Comment</button>
+                    </form>
+                </div>
+                <div class="uploaded">
+                    <p class="post-user">{{user.username}}</p>
+                    <div class="img-cont">
+                        <img src="../templates/Wallpapers/derrick-cooper-L505cPnmIds-unsplash.jpg">
+                    </div>
+                    <div class="caption">
+                        <p>@{{user.username}}:Nice view from somewhere around the world.</p>
+                    </div>
+                    <form class="comment-form">
+                        <!-- <label for="text">Add Your comment</label> -->
+                        <input type="text" placeholder='Add your comment'>
+                        <button>Post Comment</button>
+                    </form>
+                </div>
+                <div class="uploaded">
+                    <p class="post-user">{{user.username}}</p>
+                    <div class="img-cont">
+                        <img src="../templates/Wallpapers/joshua-sortino-71vAb1FXB6g-unsplash.jpg">
+                    </div>
+                    <div class="caption">
+                        <p>@{{user.username}}:Nice view from somewhere around the world.</p>
+                    </div>
+                    <form class="comment-form">
+                        <!-- <label for="text">Add Your comment</label> -->
+                        <input type="text" placeholder='Add your comment'>
+                        <button>Post Comment</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+    <script src="{% static 'app.js' %}"></script>
 </body>
+
 </html>

@@ -1,11 +1,10 @@
 body{
-    background-color: black;
+    scroll-behavior: smooth;
 }
 .init-cont {
-    background-color: #f2f2f2;
+    display: flex;
     border-radius: 15px;
     margin: 2% auto 15% auto;
-    /* border: 1px solid #888; */
     width: 70%;
     animation: jumpIn 2s forwards;
 }
@@ -19,11 +18,14 @@ body{
 .container label{
     padding-top: 12px;
     font-size: 17px;
+    margin-left: 12px;
 }
 
 .container input{
     padding: 15px;
     font-size: 18px;
+    border: 1px solid black;
+    border-radius: 15px;
 }
 .container button{
   margin-top: 12px;
