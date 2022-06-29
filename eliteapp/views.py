@@ -16,7 +16,7 @@ def signup(request):
                 messages.info(request, "Email Taken")
                 return redirect('.')
             elif User.objects.filter(username=username).exists():
-                messages.info(request, " Username is not yours, Think of another")
+                messages.info(request, " Username is taken, Think of another")
                 return redirect('.')
             else:
                 user=User.objects.create_user(username=username, email=email, password=password)
@@ -26,7 +26,7 @@ def signup(request):
                 login(request, user_login)
                 return redirect('login')
         else:
-            messages.error(request, 'Password do not match')
+            messages.error(request, 'Password does not match')
             return redirect('signup')
 
     else:    
@@ -43,7 +43,7 @@ def loggedin(request):
             login(request, user)
             return redirect('home')
         else:
-            messages.info(request, 'You want to login without signup , Come Log am na, Goat!')
+            messages.info(request, "You don't have an account.Please,sign up")
             return redirect('.')
     return render(request, 'login.html')
 
