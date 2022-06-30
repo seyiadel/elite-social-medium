@@ -27,7 +27,7 @@
          <div class="sidenav-li"> 
             <img src="../static/icons/info.png"> 
             <p>About Us</p>
-         </div>
+        </div>
     </div>
     <div class="overlay">
         <div class="overlay-content">
@@ -56,6 +56,33 @@
     <div class="init-content">
         <div class="init-content2">
             <div class="content">
+                <div class="hamburger-icon">
+                    <div class="first-icon"></div>
+                    <div class="second-icon"></div>
+                    <div class="third-icon"></div>
+                </div>
+                <div class="mobile_menu_list">
+                    <div class="mobile_menu_list_lists">
+                        <img src="../templates/icons/home.png">
+                        <p class="mobile_menu_list_lists_para">Home</p>
+                    </div>
+                    <div class="mobile_menu_list_lists addPost">
+                        <img src="../templates/icons/plus.png">
+                        <p class="addPost mobile_menu_list_lists_para">Add Post</p>
+                    </div>
+                    <div class="mobile_menu_list_lists">
+                        <img src="../templates/icons/bell.png">
+                        <p class="mobile_menu_list_lists_para">Notification</p>
+                    </div>
+                    <div class="mobile_menu_list_lists">
+                        <img src="../templates/icons/info.png">
+                        <p class="mobile_menu_list_lists_para">About Us</p>
+                    </div>
+                    <div class="mobile_menu_list_lists">
+                        <img src="../templates/icons/logout.png">
+                        <p class="link2"><a href="{% url 'logout' %}">Logout</a></p>
+                    </div>
+                </div>
                 <h1> Welcome Home {{user.username}}. </h1>
                 <a class="link" href="{% url 'logout' %}">Logout</a>
             </div>
@@ -77,7 +104,24 @@
                             <button>Post Comment</button>
                         </form>
                 </div>
+<<<<<<< HEAD
                 
+=======
+                <div class="uploaded">
+                    <p class="post-user">{{user.username}}</p>
+                    <div class="img-cont">
+                        <img src="../templates/Wallpapers/derrick-cooper-L505cPnmIds-unsplash.jpg">
+                    </div>
+                    <div class="caption">
+                        <p>@{{user.username}}:Nice view from somewhere around the world.</p>
+                    </div>
+                    <form class="comment-form">
+                        <!-- <label for="text">Add Your comment</label> -->
+                        <input type="text" placeholder='Add your comment'>
+                        <button>Post Comment</button>
+                    </form>
+                </div>
+>>>>>>> 5d13b839e5804d7987cf169e2844c584175fa099
             </div>
         </div>
     </div>
