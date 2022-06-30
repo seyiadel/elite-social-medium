@@ -6,7 +6,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/home.css">
     <link rel="stylesheet" href="{% static 'home.css' %}">
     <title>Bants & Talk</title>
 </head>
@@ -14,19 +13,19 @@
 <body>
     <div class="sidenav">
        <div class="sidenav-li"> 
-           <img src="../templates/icons/home.png"> 
+           <img src="../static/icons/home.png"> 
            <p>Home</p>
         </div>
         <div class="sidenav-li addPost">
-            <img src="../templates/icons/plus.png"> 
+            <img src="../static/icons/plus.png"> 
             <p class="addPost">Add Post</p>
         </div>
         <div class="sidenav-li"> 
-            <img src="../templates/icons/bell.png"> 
+            <img src="../static/icons/bell.png"> 
             <p>Notification</p>
          </div>
          <div class="sidenav-li"> 
-            <img src="../templates/icons/info.png"> 
+            <img src="../static/icons/info.png"> 
             <p>About Us</p>
          </div>
     </div>
@@ -34,18 +33,19 @@
         <div class="overlay-content">
             <p class="close">X</p>
             <div class="inner-overlay-content">
-                <form class="form">
+                <form  action="add-post/" class="form" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
                     <h1>{{user.username}},Create a post:</h1>
                     <label for="story">Write a caption:</label>
-                    <textarea placeholder="Post a caption.." id="post-txt" name="story" rows="5" cols="33">
+                    <textarea placeholder="Post a caption.." id="post-txt" name="caption" rows="5" cols="33">
 
                     </textarea>
 
                     <label id="photo" for="photo">Add a picture below:</label>
-                    <input type="file" id="image-input" accept="image/jpeg, image/png, image/jpg">
+                    <input type="file" id="image-input" name="postimage" accept="image/jpeg, image/png, image/jpg">
 
                     <div id="display-image"></div>
-                    <button>Post</button>
+                    <button type="submit">Post</button>
                 </form>
             </div>
         </div>
@@ -61,51 +61,27 @@
             </div>
             <div class="posts">
                 <div class="uploaded">
-                    <p class="post-user">{{user.username}}</p>
-                    <div class="img-cont">
-                        <img src="../templates/Wallpapers/andre-benz-qJfznuTMAYA-unsplash.jpg">
-                    </div>
-                    <div class="caption">
-                        <p>@{{user.username}}:Nice view from somewhere around the world.</p>
-                    </div>
-                    <form class="comment-form">
-                        <!-- <label for="text">Add Your comment</label> -->
-                        <input type="text" placeholder='Add your comment'>
-                        <button>Post Comment</button>
-                    </form>
+                    {% for feed in feeds %}
+                        <p class="post-user">{{feed.user}}</p>
+                        <div class="img-cont">
+                            <img src="{{feed.postimage.url}}">
+                        </div>
+                        <div class="caption">
+                            <p>@{{feed.user}}:{{feed.caption}}.</p>
+                        </div>
+                    {% endfor %}
+                        <form class="comment-form">
+                            {% csrf_token %}
+                            <!-- <label for="text">Add Your comment</label> -->
+                            <input type="text" placeholder='Add your comment'>
+                            <button>Post Comment</button>
+                        </form>
                 </div>
-                <div class="uploaded">
-                    <p class="post-user">{{user.username}}</p>
-                    <div class="img-cont">
-                        <img src="../templates/Wallpapers/derrick-cooper-L505cPnmIds-unsplash.jpg">
-                    </div>
-                    <div class="caption">
-                        <p>@{{user.username}}:Nice view from somewhere around the world.</p>
-                    </div>
-                    <form class="comment-form">
-                        <!-- <label for="text">Add Your comment</label> -->
-                        <input type="text" placeholder='Add your comment'>
-                        <button>Post Comment</button>
-                    </form>
-                </div>
-                <div class="uploaded">
-                    <p class="post-user">{{user.username}}</p>
-                    <div class="img-cont">
-                        <img src="../templates/Wallpapers/joshua-sortino-71vAb1FXB6g-unsplash.jpg">
-                    </div>
-                    <div class="caption">
-                        <p>@{{user.username}}:Nice view from somewhere around the world.</p>
-                    </div>
-                    <form class="comment-form">
-                        <!-- <label for="text">Add Your comment</label> -->
-                        <input type="text" placeholder='Add your comment'>
-                        <button>Post Comment</button>
-                    </form>
-                </div>
+                
             </div>
         </div>
     </div>
-    <script src="app.js"></script>
+    <!--<script src="app.js"></script>-->
     <script src="{% static 'app.js' %}"></script>
 </body>
 

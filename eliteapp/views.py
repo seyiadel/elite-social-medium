@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login,logout
 from django.contrib.auth.decorators import login_required
+from .models import Feedpost, UserProfile
 # Create your views here.
 def signup(request):
     if request.method =='POST':
@@ -24,7 +25,13 @@ def signup(request):
 
                 user_login = authenticate(username=username, password=password)
                 login(request, user_login)
-                return redirect('login')
+
+
+                #Create Profile for New User
+                user_model=User.objects.get(username=username)
+                new_profile=UserProfile.objects.create(user=user_model, id_user=user_model.id)
+                new_profile.save()
+                return redirect('login') 
         else:
             messages.error(request, 'Password does not match')
             return redirect('signup')
@@ -43,16 +50,32 @@ def loggedin(request):
             login(request, user)
             return redirect('home')
         else:
-            messages.info(request, "You don't have an account.Please,sign up")
+            messages.info(request, "You don't have an account.Please sign up")
             return redirect('.')
     return render(request, 'login.html')
 
 @login_required(login_url='login')
 def home(request):
-    return render(request, 'home.html')
+    user_objects = User.objects.get(username=request.user.username)
+    user_profile = UserProfile.objects.get(user=user_objects)
+    feeds = Feedpost.objects.all()
+    return render(request, 'home.html',{'user_profile':user_profile, 'feeds':feeds})
 
 @login_required(login_url='login')
 def loggedout(request):
     logout(request)
     messages.success(request,'Logged Out Succesfully')
     return redirect('login')
+
+@login_required(login_url='login')
+def add_post(request):
+    if request.method == 'POST':
+        user=request.user.username
+        caption=request.POST['caption']
+        postimage=request.FILES.get('postimage')
+    
+        new_post=Feedpost.objects.create(user=user,caption=caption, postimage=postimage)
+        new_post.save()
+        return redirect('home')
+    else:
+        return redirect('home')
