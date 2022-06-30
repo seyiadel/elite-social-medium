@@ -1,11 +1,29 @@
 let overlay = document.querySelector('.overlay')
-let addPost = document.querySelector('.addPost')
+let hamburger = document.querySelector('.hamburger-icon')
+let addPost = document.querySelectorAll('.addPost')
+let content = document.querySelector('.posts')
+let menuList = document.querySelector('.mobile_menu_list')
+let mobileClose = document.querySelectorAll(".mobile_menu_list_lists_para")
 const image_input = document.querySelector("#image-input");
 let close = document.querySelector('.close')
 
-addPost.addEventListener('click', () => {
+for(let add of addPost){
+  add.addEventListener('click', () => {
     overlay.style.width = '100%'
 })
+}
+
+hamburger.addEventListener('click', () => {
+  menuList.style.display = 'block'
+})
+content.addEventListener('click', () => {
+  menuList.style.display = 'none'
+})
+for (let mobile of mobileClose){
+  mobile.addEventListener('click', () => {
+    menuList.style.display = 'none'
+  })
+}
 
 close.addEventListener('click', () => {
     overlay.style.width = '0%'
