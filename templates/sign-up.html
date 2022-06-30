@@ -6,7 +6,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
+=======
     <link rel="stylesheet" href="../static/signUp.css">
+>>>>>>> 5d13b839e5804d7987cf169e2844c584175fa099
     <link rel="stylesheet" href="{% static 'signUp.css' %}">
     <title>Sign-up</title>
 </head>
@@ -129,9 +132,9 @@
                                 color: red;
                             }
                         </style>
-                        <!-- {% for message in messages %} -->
-                        <h4>{{message}}</h4>
-                        <!-- {%endfor%} -->
+                        {% for message in messages %}
+                            <h4>{{message}}</h4>
+                        {%endfor%}
                     </div>
                     <label for="name"><b>Username</b></label>
                     <input type="text" placeholder="johndoe" name="username">
@@ -140,10 +143,10 @@
                     <input type="email" placeholder="johndoe@gmail.com" name="email">
 
                     <label for="psw"><b>Password</b></label>
-                    <input type="password" placeholder="35818" name="password">
+                    <input type="password" placeholder="******" name="password">
 
                     <label for="psw-repeat"><b>Confirm Password</b></label>
-                    <input class="inpt4" type="password" placeholder="35818" name="password2">
+                    <input class="inpt4" type="password" placeholder="******" name="password2">
 
                     <button class="clearfix" type="submit">Sign Up</button>
                 </div>
