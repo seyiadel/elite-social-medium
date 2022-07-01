@@ -89,20 +89,21 @@
             <div class="posts">
                 <div class="uploaded">
                     {% for feed in feeds %}
-                        <p class="post-user">{{feed.user}}</p>
+                        <p class="post-user">@{{feed.user}}</p>
                         <div class="img-cont">
                             <img src="{{feed.postimage.url}}">
                         </div>
                         <div class="caption">
-                            <p>@{{feed.user}}:{{feed.caption}}.</p>
+                            <p>@{{feed.user}}: {{feed.caption}}</p>
                         </div>
-                    {% endfor %}
+                   
                         <form class="comment-form">
                             {% csrf_token %}
                             <!-- <label for="text">Add Your comment</label> -->
                             <input type="text" placeholder='Add your comment'>
                             <button>Post Comment</button>
                         </form>
+                        {% endfor %}
                 </div>
                 <!-- <div class="uploaded">
                     <p class="post-user">{{user.username}}</p>

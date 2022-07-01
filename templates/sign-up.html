@@ -131,19 +131,31 @@
                             }
                         </style>
                         {% for message in messages %}
-                            <h4>{{message}}</h4>
+                        <h4>{{message}}</h4>
                         {%endfor%}
                     </div>
-                    <label for="name"><b>Username</b></label>
+                    <div class="label">
+                        <p><b>Username</b></p>
+                        <p class="important">*</p>
+                    </div>
                     <input type="text" placeholder="johndoe" name="username">
 
-                    <label for="email"><b>Email</b></label>
+                    <div class="label">
+                        <p><b>Email</b></p>
+                        <p class="important">*</p>
+                    </div>
                     <input type="email" placeholder="johndoe@gmail.com" name="email">
 
-                    <label for="psw"><b>Password</b></label>
+                    <div class="label">
+                        <p><b>Password</b></p>
+                        <p class="important">*</p>
+                    </div>
                     <input type="password" placeholder="******" name="password">
 
-                    <label for="psw-repeat"><b>Confirm Password</b></label>
+                    <div class="label">
+                        <p><b>Confirm Password</b></p>
+                        <p class="important">*</p>
+                    </div>
                     <input class="inpt4" type="password" placeholder="******" name="password2">
 
                     <button class="clearfix" type="submit">Sign Up</button>
