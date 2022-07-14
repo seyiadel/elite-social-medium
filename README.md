@@ -1,3 +1,3 @@
 # elite-social-medium
 
-Anu do justice to this Lol😂
+A social media app with Instagram-Feature Like.
